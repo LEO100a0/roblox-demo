@@ -16,7 +16,18 @@
             background-color: #87CEEB; /* Azul claro */
             color: #fff;
             padding: 20px;
-            text-align: center;
+            display: flex; /* Alinear elementos horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            justify-content: flex-start; /* Alinear a la izquierda */
+        }
+        .header-logo img {
+            width: 160px; /* Tamaño del logo */
+            height: auto; /* Mantener la proporción */
+            margin-right: 20px; /* Espacio entre el logo y el texto */
+        }
+        .header-text {
+            text-align: center; /* Centrar el texto */
+            flex-grow: 1; /* Ocupar el espacio restante */
         }
         header h1 {
             margin: 0;
@@ -24,7 +35,19 @@
         nav {
             background-color: #003366; /* Azul marino */
             padding: 10px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Separa los grupos */
+            align-items: center;
+        }
+        .nav-centro {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1; /* Ocupa el espacio restante */
+            margin-left: 200px; /* Mueve los botones más a la derecha */
+        }
+        .nav-derecha {
+            display: flex;
+            justify-content: flex-end; /* Alinea a la derecha */
         }
         nav button {
             border: 0;
@@ -150,19 +173,45 @@
             color: #003366;
             margin: 10px 0 0;
         }
+        .contacto {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .contacto h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #003366;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>TU TIENDA Shop</h1>
-        <p>Tu lugar para comprar laptops, celulares y accesorios</p>
+        <div class="header-logo">
+            <img src="Logo.jpg" alt="Logo de la tienda">
+        </div>
+        <div class="header-text">
+            <h1>Mundo Tech</h1>
+            <p>Tu lugar para comprar laptops, celulares y accesorios</p>
+        </div>
     </header>
     <nav>
-        <button onclick="mostrarTodos()"><span>Todos</span></button>
-        <button onclick="mostrarCelulares()"><span>Celulares</span></button>
-        <button onclick="mostrarLaptops()"><span>Laptops</span></button>
-        <button onclick="mostrarAccesorios()"><span>Accesorios</span></button>
-        <button onclick="irAlCarrito()"><span>Carrito</span></button>
+        <!-- Grupo 1: Botones centrados con margen a la derecha -->
+        <div class="nav-centro">
+            <button onclick="mostrarTodos()"><span>Todos</span></button>
+            <button onclick="mostrarCelulares()"><span>Celulares</span></button>
+            <button onclick="mostrarLaptops()"><span>Laptops</span></button>
+            <button onclick="mostrarAccesorios()"><span>Accesorios</span></button>
+        </div>
+        <!-- Grupo 2: Botones a la derecha -->
+        <div class="nav-derecha">
+            <button onclick="irAlCarrito()"><span>Carrito</span></button>
+            <button onclick="irAlContacto()"><span>Contacto</span></button>
+        </div>
     </nav>
     <main>
         <div class="productos">
@@ -256,7 +305,7 @@
 
             <!-- Productos: Accesorios (6) -->
             <div class="producto" data-categoria="accesorios">
-                <img src="Logo.jpg/300x200" alt="Accesorio 1">
+                <img src="https://promart.vteximg.com.br/arquivos/ids/5552926-1000-1000/image-6b5c7ccc88844ffd873727f837027aeb.jpg?v=637866091747430000/300x200" alt="Accesorio 1">
                 <h2>Cargador Apple Iphone</h2>
                 <p>Cargador Tipo C de 20w.</p>
                 <p><strong>Precio: S/100</strong></p>
@@ -299,17 +348,24 @@
             </div>
         </div>
 
-        <!-- Carrito de compras movido aquí -->
+        <!-- Carrito de compras -->
         <div class="carrito">
             <h3>Carrito de Compras</h3>
             <ul id="carrito-lista"></ul>
             <p>Total: S/<span id="total">0</span></p>
             <button onclick="vaciarCarrito()" style="background-color: #ff6666; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Vaciar Carrito</button>
         </div>
+
+        <!-- Sección de contacto -->
+        <div id="contacto" class="contacto">
+            <h3>Contacto</h3>
+            <p>¿Dudas o preguntas? ¡Contáctanos!</p>
+            <p>Email: info@mundotech.com</p>
+            <p>Teléfono: +51 123 456 789</p>
+        </div>
     </main>
     <footer>
-        <address>Contacto: info@tutienda.com</address>
-        <small>&copy; 2023 TU TIENDA Shop. Todos los derechos reservados.</small>
+        <small>&copy; 2025 Mundo Tech. Todos los derechos reservados.</small>
     </footer>
 
     <script>
@@ -401,6 +457,10 @@
 
         function irAlCarrito() {
             document.querySelector('.carrito').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function irAlContacto() {
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
